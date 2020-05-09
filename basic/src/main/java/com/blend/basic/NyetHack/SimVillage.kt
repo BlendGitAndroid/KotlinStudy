@@ -79,7 +79,7 @@ fun main(args: Array<String>) {
      * 定义：Lambda表达式
      * 返回数据：Lambda结果
      */
-    runSimulation("xiaohai") { playerName, numBuilding ->
+    runSimulation("xiaohai", ::printConstructionCost) { playerName, numBuilding ->
         val currentYear = 2018
         println("Adding $numBuilding houses")
         "Welcome to SimVillage,$playerName!(copyright $currentYear)"
@@ -92,6 +92,37 @@ fun main(args: Array<String>) {
      *
      */
 
+    /**
+     *
+     * 前面的列子中，要把函数作为参数传递给其他函数使用，先定义一个Lambda，然后把它作为参数传递给另外一个函数使用。
+     * 除了Lambda表达式，Kotlin还提供了函数引用。
+     *
+     * 函数引用：可以把一个具名函数（使用fun关键字定义的函数）转换成一个值参。凡是使用Lambda的地方，都可以使用函数引用。
+     * 要想获得函数引用，使用::操作符，后要跟引用的函数名
+     *
+     * 函数引用主要是将具名函数作为值参传递给其他函数，弥补了Lambda的不足
+     */
+
+    /**
+     * 函数类型作为返回类型：定义一个能返回函数的类型
+     */
+    runSimulation()
+
+    /**
+     * Kotlin中的Lambda就是闭包
+     *
+     * 匿名函数能修改并引用定义在自己的作用域之外的变量
+     *
+     * 可以看到，println(greetingFunction("Blend runSimulation"))的调用方式，building的值增加了
+     *
+     * 但是println(configureGreetingFunction()("Blend runSimulation"))的却还是原来的值
+     */
+    runSimulation()
+
+
+    //TODO("不知道原因")
+    fun runMyRunnable(runnabl: () -> Unit) = { runnabl() }
+    runMyRunnable { println("Hi Blend") }
 
     /*-----------------------以下是各种用法---------------------------------*/
 
@@ -110,7 +141,37 @@ fun main(args: Array<String>) {
 
 }
 
-inline fun runSimulation(playerName: String, greetingFunction: (String, Int) -> String) {
+inline fun runSimulation(
+    playerName: String,
+    costPrinter: (Int) -> Unit,
+    greetingFunction: (String, Int) -> String
+) {
     val numBuildings = (1..3).shuffled().last()
+    costPrinter(numBuildings)
     println(greetingFunction(playerName, numBuildings))
+}
+
+fun printConstructionCost(numBuildings: Int) {
+    val cost = 500
+    println("construct cost:${numBuildings * cost}")
+}
+
+fun runSimulation() {
+    val greetingFunction = configureGreetingFunction()
+    println(greetingFunction("Blend runSimulation"))
+    println(greetingFunction("Blend runSimulation"))
+    //同样也能写成下面这样的，但是下面这个函数是匿名的
+    println(configureGreetingFunction()("Blend runSimulation"))
+
+}
+
+fun configureGreetingFunction(): (String) -> String {
+    val structureType = "hospitals"
+    var numBuildings = 5
+    return {
+        val currentYear = 2018
+        numBuildings += 1
+        println("Adding $numBuildings $structureType")
+        "Welcome to SimVillage,$it!(copyright $currentYear)"
+    }
 }

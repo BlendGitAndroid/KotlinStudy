@@ -12,6 +12,22 @@ fun main(args: Array<String>) {
      */
     "Dragon's Breath".forEach { println("$it") }
 
+    /**
+     * 数值转换：toFloat,toDouble等
+     *
+     * 安全的数值转化：toFloatOrNull,toIntOrNull等
+     */
+
+    val gold: Int = "5.91111111".toIntOrNull() ?: 0
+    println(gold)
+
+    /**
+     * Double类型的格式化
+     *
+     * roundToInt:四舍五入计算
+     */
+    println("format code:${"%.2f".format(5.91111111)}")
+
 }
 
 fun placeOrder(menuData: String) {

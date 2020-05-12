@@ -28,6 +28,126 @@ fun main(args: Array<String>) {
      */
     println("format code:${"%.2f".format(5.91111111)}")
 
+    /**
+     * list集合
+     */
+    listFun()
+
+
+    /**
+     * set集合
+     */
+    setFun()
+
+}
+
+fun setFun() {
+    /*
+    与List集合的不同之处在于：
+    1.Set集合的值是唯一的
+    2.不支持基于索引的存取值函数，因为它里面的元素顺序不固定
+     */
+
+    val planets = setOf("Mercury", "Venus", "Earth")
+    planets.elementAt(2)
+
+    /**
+     * 常用的mutator函数
+     * 1.add
+     * 2.addAll
+     * 3.+=(添加元素运算符)
+     * 4.-=（删除元素运算符）
+     * 5.remove
+     * 6.removeAll
+     * 7.clear
+     */
+
+    /**
+     * 使用toSet()和toList()进行集合转换
+     */
+
+    /**
+     *
+     * 数组类型：主要目的是支持和java互操作
+     * 原则上不使用，除非与Java互操作
+     *
+     * 常见的数组类型及创建他们的函数
+     * IntArray --- intArrayOf
+     * DoubleArray --- doubleArrayOf
+     * LongArray --- longArrayOf
+     * ShortArray --- shortArrayOf
+     * ByteArray --- byteArrayOf
+     * FloatArray --- floatArrayOf
+     * BooleanArray --- booleanArrayOf
+     * Array --- arrayOf
+     */
+    listOf(1, 2, 3).toIntArray()    //转化为Int数组
+
+
+}
+
+fun listFun() {
+    /**
+    list越界取值：安全索引
+     */
+    //listOf函数不可变
+    val patronList = listOf("Eli", "Mordoc", "Blend")
+
+    //安全索引
+    patronList.getOrElse(4) { "Unknown Patron else" }
+
+    patronList.getOrNull(4) ?: "Unknown Patron null"
+
+    if (patronList.contains("Blend")) {
+        println("is OK")
+    } else {
+        print("is not Ok")
+    }
+
+
+    //可变列表
+    val patronMutableList = mutableListOf("Eli", "Mordoc", "Blend")
+    patronMutableList.add("blend")
+    patronMutableList.add(0, "blendVip")
+    patronMutableList.remove("mordoc")
+
+
+    //可变列表和不可变列表之间的互换
+    patronList.toMutableList()
+    patronMutableList.toList()
+    patronMutableList[0] = "BlendVip"
+
+    /**
+     * 常用的mutator函数
+     * 1.[]=(元素设置运算符)
+     * 2.add
+     * 3.add(指定索引位置)
+     * 4.addAll
+     * 5.+=(添加元素运算符)
+     * 6.-=（删除元素运算符）
+     * 7.clear
+     * 8.removeIf
+     */
+
+
+    /**
+     * 遍历
+     */
+    for (patron in patronList) {
+        println("Good evening,$patron")
+    }
+
+    patronList.forEach { println("Good evening,$it") }
+
+    patronList.forEachIndexed { index, value -> println("Good evening,$index --- $value") }
+
+    /**
+     * 支持解构，能获取其前5个参数
+     *
+     * _:能过滤掉不想要的元素
+     */
+    val (gold, _, bronze) = patronList
+
 }
 
 fun placeOrder(menuData: String) {

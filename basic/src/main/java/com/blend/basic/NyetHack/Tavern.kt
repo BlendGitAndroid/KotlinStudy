@@ -39,6 +39,45 @@ fun main(args: Array<String>) {
      */
     setFun()
 
+    /**
+     * map集合
+     */
+    mapFun()
+
+}
+
+fun mapFun() {
+
+    /**
+     * mapOf()和mutableMapOf()两种创建类型
+     *
+     */
+    val patrolGold = mapOf("Eli" to 10.5, "Blend" to 8.0, "Sophie" to 5.5)
+
+    val patrolGoldPair = mapOf(Pair("Eli", 10.75), Pair("Blend", 8.0), Pair("Sophie", 5.5))
+
+    //根据键读取相应的值
+    print(patrolGold["Eli"])
+
+    /**
+     * Map 存取函数
+     * 1.[]取值函数
+     * 2.getValue
+     * 3.getOrElse
+     * 4.getOrDefault
+     *
+     * Map mutator函数
+     * 1.=
+     * 2.+=
+     * 3.put
+     * 4.putAll
+     * 5.getOrPut
+     * 6.remove
+     * 7.-(删除指定运算符)
+     * 8.-=(删除指定运算符)
+     * 9.clear
+     */
+
 }
 
 fun setFun() {

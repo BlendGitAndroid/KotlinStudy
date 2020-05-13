@@ -14,7 +14,20 @@ fun main(args: Array<String>) {
 
     runFunc()
 
+    alsoFunc()
+
     takeIfFunc()
+
+}
+
+/**
+ * also和let函数功能相似，also也是把接收者作为值参传给Lambda，also返回接收者对象，而let返回Lambda结果
+ *
+ * also尤其适合针对同一原始对象，在类里面能防止竞态条件
+ */
+fun alsoFunc() {
+
+    File("test.class").also { println(it.name) }
 
 }
 

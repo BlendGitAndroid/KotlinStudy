@@ -40,6 +40,10 @@ class Player(
      */
     private val hometown: String = "Chain"
 
+    /**
+     * 调用数据类
+     */
+    var currentPosition = Coordinate(0, 0)
 
     /**
      *延迟初始化

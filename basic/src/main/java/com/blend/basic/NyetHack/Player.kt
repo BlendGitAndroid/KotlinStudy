@@ -21,10 +21,10 @@ package com.blend.basic.NyetHack
  */
 class Player(
     _name: String,
-    var healthPoints: Int = 100,
+    override var healthPoints: Int = 100,
     val isBlessed: Boolean,
     private val isImmortal: Boolean
-) {
+) : Fightable {
 
     var name = _name
         get() = "${field.capitalize()} of $hometown"  //自定义getter
@@ -32,6 +32,19 @@ class Player(
             field = value.trim()
         }
 
+    override val diceCount: Int = 3
+
+    override val diceSides: Int = 6
+
+    override fun attack(opponent: Fightable): Int {
+        val damageDealt = if (isBlessed) {
+            damageRoll * 2
+        } else {
+            damageRoll
+        }
+        opponent.healthPoints -= damageDealt
+        return damageDealt
+    }
 
     /**
      * 属性必须初始化

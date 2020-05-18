@@ -4,7 +4,7 @@ package com.blend.basic.NyetHack
 /**
  * 定义泛型类
  *
- * 泛型类的构造函数可以接受任意类型
+ * 泛型类的构造函数可以接受任意Loot类型
  *
  *
  *LootBox能存放任何类型的Loot实例，但一次只能存放一个。如果往LootBox里面存放多个呢，使用vararg关键字，接受多个值参。

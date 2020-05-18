@@ -146,7 +146,7 @@ inline fun runSimulation(
     costPrinter: (Int) -> Unit,
     greetingFunction: (String, Int) -> String
 ) {
-    val numBuildings = (1..3).shuffled().last()
+    val numBuildings = (1..3).random()
     costPrinter(numBuildings)
     println(greetingFunction(playerName, numBuildings))
 }

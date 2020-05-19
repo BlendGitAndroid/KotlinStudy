@@ -61,7 +61,7 @@ fun combineTest() {
 
     val foldedValue = listOf<Int>(1, 2, 3, 4).fold(2) { accumulator, number ->
         println("Accumulated value:$accumulator")
-        accumulator + number * 3
+        accumulator + number
     }
     println("Final value:$foldedValue")
 
@@ -74,6 +74,7 @@ fun main(args: Array<String>) {
     filterTest()
 
     combineTest()
+
 
     /**
      * 高阶函数：
@@ -88,6 +89,11 @@ fun main(args: Array<String>) {
      * none(predicate):如果集合中没有符合匹配条件的元素，返回true，否则返回false
      *
      * fold:给定一个初始值,对集合的元素按照某个逻辑进行一一累计
+     *
+     * zip:合并函数来合并两个集合，返回的是一个包含键值对的新集合，调用toMap，将键值对转换为map集合
+     *
+     *
+     * 惰性集合类型：序列
      */
 
 }

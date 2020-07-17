@@ -27,7 +27,9 @@ fun main(args: Array<String>) {
  */
 fun alsoFunc() {
 
-    File("test.class").also { println(it.name) }
+    val also = File("test.class").also {
+        println(it.name)
+    }
 
 }
 

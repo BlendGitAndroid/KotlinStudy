@@ -15,7 +15,7 @@ fun main(args: Array<String>) {
      * 声明只读变量：val关键字,只要有必要，建议都是用val关键字
      *
      * Kotlin的内置数据类型：
-     * String,char,Boolean,Int,Double,List,Set,Map
+     * String,Char,Boolean,Int,Double,List,Set,Map
      *
      * 类型推断：String和Int都是灰色的，是冗余的。对于已声明并赋值的变量，允许省略类型定义
      */

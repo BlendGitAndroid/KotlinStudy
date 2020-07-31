@@ -21,7 +21,7 @@ fun main(args: Array<String>) {
      * 任何不需要参数，能返回String的函数，都可以赋值给greetingFunction
      *
      * 注意到没有，没有return关键字，匿名函数不需要return关键字返回数据，而是会隐式或者自动返回函数体最后一行语句，
-     * 不用return的原因是，编译器不知道返回数据究竟是来自于调用函数的函数，还是匿名函数本身。
+     * 不用return的原因是，编译器不知道返回数据究竟是来自于调用匿名函数的函数，还是匿名函数本身。
      */
     val greetingFunction: () -> String = {
         val currentYear = 2018
@@ -70,6 +70,8 @@ fun main(args: Array<String>) {
     println(greetingFunctionInfer("Jiang zuo", 5))
 
     /**
+     * 分清楚函数调用和函数定义
+     *
      * 定义参数是函数的函数：函数支持包括函数在内的任何类型的参数
      * 定义：在函数名后的一对圆括号内列出，再加上类型。
      *
@@ -141,6 +143,9 @@ fun main(args: Array<String>) {
 
 }
 
+/**
+ * 函数定义时，建议把函数类型的参数放在最后，方便函数调用者使用。
+ */
 inline fun runSimulation(
     playerName: String,
     costPrinter: (Int) -> Unit,

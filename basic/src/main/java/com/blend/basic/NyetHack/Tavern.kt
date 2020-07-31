@@ -230,6 +230,7 @@ private fun toDragonSpeak(phrase: String) =
             "o" -> "0"
             "u" -> "|_|"
             else -> it.value
+
         }
     }
 

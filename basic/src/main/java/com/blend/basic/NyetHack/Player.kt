@@ -5,7 +5,7 @@ package com.blend.basic.NyetHack
  * 1.public(默认情况下)
  * 2.private（类）
  * 3.protected（类或者子类）
- * 4.internal（同一模块）
+ * 4.internal（同一模块，这里我理解的是同一个module）
  *
  *
  * 针对每一个属性,属性属于类级别的，Kotlin会产生一个field,一个getter，一个setter
@@ -26,7 +26,7 @@ class Player(
     private val isImmortal: Boolean
 ) : Fightable {
 
-    var name = _name
+    var name: String = _name
         get() = "${field.capitalize()} of $hometown"  //自定义getter
         private set(value) {
             field = value.trim()

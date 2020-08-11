@@ -1,4 +1,3 @@
-include ':test'
 rootProject.name='KotlinStudy'
 include ':app'
 include ':basic'

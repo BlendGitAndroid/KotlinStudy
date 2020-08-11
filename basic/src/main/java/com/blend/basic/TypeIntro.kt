@@ -34,8 +34,4 @@ fun main(args: Array<String>) {
      * 这是一个Git测试数据
      */
 
-    /**
-     *这是一个feature分支提交记录
-     */
-
 }

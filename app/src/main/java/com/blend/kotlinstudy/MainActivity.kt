@@ -9,6 +9,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         //git revert
+        //在develop上做了一些更改
         //在feature上做了一些更改
     }
 }

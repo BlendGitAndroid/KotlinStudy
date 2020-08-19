@@ -8,7 +8,7 @@ package com.blend.basic.NyetHack
  *
  * toString():默认提供主构造函数里面声明的属性（Coordinate(x=1, y=1)）
  *
- * equals():允许基于柱构造函数中的属性来判断相等性
+ * equals():允许基于主构造函数中的属性来判断相等性
  *
  * copy():复制一个对象
  */
@@ -20,7 +20,7 @@ data class Coordinate(val x: Int, val y: Int) {
 }
 
 /**
- * ，枚举类：定义常量集合的一种特殊类
+ * 枚举类：定义常量集合的一种特殊类
  */
 enum class Direction(private val coordinate: Coordinate) {
     NORTH(Coordinate(0, -1)),
@@ -31,6 +31,16 @@ enum class Direction(private val coordinate: Coordinate) {
     fun updateCoordinate(playerCoordinate: Coordinate) = playerCoordinate + coordinate
 }
 
+/**
+ * 运算符重载：
+ * +   ----- plus
+ * +=  ----- plusAssign
+ * ==  ----- equals
+ * >   ----- compareTo：左边大于右边，返回true
+ * []  ----- get
+ * ..  ----- rangeTo
+ * in  ----- contains
+ */
 
 fun main(args: Array<String>) {
 

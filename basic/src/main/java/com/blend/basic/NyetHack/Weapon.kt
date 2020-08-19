@@ -1,7 +1,8 @@
 package com.blend.basic.NyetHack
 
 /**
- * 重写eruals方法和hashCode方法
+ * 重写equals方法和hashCode方法,按照自己决定如何按结构比较自定义类
+ * 这些都是自动生成的功能
  */
 open class Weapon(val name: String, val type: String) {
 

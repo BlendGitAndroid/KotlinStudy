@@ -9,7 +9,7 @@ open class Room(val name: String) {
 
     protected open val dangerLevel = 5
 
-    var monster: Monster? = Goblin()
+    var monster: Monster? = Goblin("Goblin")
 
     fun description() =
         "Room:$name Danger level:$dangerLevel + Creature:${monster?.description ?: "none."}"
@@ -48,12 +48,12 @@ fun main(args: Array<String>) {
     println(currentRoom.load())
 
     /**
-     *类型检测：is
+     *类型检测：is，用来检查某个对象的类型
      */
     println(currentRoom is Room)
 
     /**
-     * 类型转换：as（要是不兼容会出现问题）
+     * 类型转换：as（要是不兼容会出现问题），强制类型转换
      *
      * 智能类型转换：只要is成功，就能调用
      */

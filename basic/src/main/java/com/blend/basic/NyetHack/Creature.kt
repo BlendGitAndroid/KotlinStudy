@@ -4,10 +4,19 @@ import java.util.*
 
 
 /**
- * 接口，可以定义属性和函数
+ * 接口，可以定义一组未实现的公共属性和行为。
+ * 类之间想要共享属性或函数，但又无法建立继承关系时，就非常适合使用这种只定义而不实现的接口特性。
+ * 也就是说，通过接口，无须继承或被继承，一组类就可以拥有共同的属性和函数。
+ *
+ * 抽象类很特殊，兼有接口和一般类的某些特性。
  */
 interface Fightable {
 
+
+    /**
+     * 接口只会定义要干什么，不管具体怎么实现。
+     * 所以这四个属性没有构造函数等初始化工具，attack函数没有函数体
+     */
     var healthPoints: Int
     val diceCount: Int
 
@@ -27,6 +36,11 @@ interface Fightable {
 
 abstract class Monster(val name: String, val description: String, override var healthPoints: Int) :
     Fightable {
+
+    fun getTest(): String {
+        return description
+    }
+
     override fun attack(opponent: Fightable): Int {
         val damageDealt = damageRoll
         opponent.healthPoints -= damageDealt
@@ -34,8 +48,13 @@ abstract class Monster(val name: String, val description: String, override var h
     }
 }
 
+/**
+ * 抽象类和接口的区别：
+ * 1)接口里不能定义构造函数。
+ * 2)一个类只能继承一个抽象类，但可以实现多个接口。
+ */
 class Goblin(
-    name: String = "Goblin",
+    name: String,
     description: String = "A nasty-looking goblin",
     healthPoints: Int = 30
 ) : Monster(

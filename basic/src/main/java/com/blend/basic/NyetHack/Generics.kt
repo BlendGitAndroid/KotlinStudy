@@ -2,9 +2,12 @@ package com.blend.basic.NyetHack
 
 
 /**
+ *
+ * 泛型系统允许函数和其他类型接受你或编译器当前无法预知的类型，大大提高了代码的复用率
+ *
  * 定义泛型类
  *
- * 泛型类的构造函数可以接受任意Loot类型
+ * 泛型类的构造函数可以接受任意Loot类及其子类型，如果不使用泛型，只能使用Loot类型，就会受限制。
  *
  *
  *LootBox能存放任何类型的Loot实例，但一次只能存放一个。如果往LootBox里面存放多个呢，使用vararg关键字，接受多个值参。
@@ -31,6 +34,8 @@ class LootBox<T : Loot>(vararg item: T) {
      * 多泛型参数
      *
      * 参数是一个奖品修改函数：接受T类型的值参，返回R类型的结果值
+     *
+     * R：英文return的缩写
      */
     fun <R> fetch(item: Int, lootModFunction: (T) -> R): R? {
         return lootModFunction(loot[item]).takeIf { open }
@@ -40,7 +45,7 @@ class LootBox<T : Loot>(vararg item: T) {
 /**
  * 泛型约束
  */
-open class Loot(val value: Int)
+open class Loot(val value: Int) //这个类就是里面只有一个成员变量value
 
 class Fedora(val name: String, value: Int) : Loot(value)
 

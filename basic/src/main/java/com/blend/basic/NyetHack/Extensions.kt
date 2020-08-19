@@ -60,10 +60,9 @@ infix fun String?.printWithDefault(default: String) = println(this ?: default)
  * return this
  * }
  *
- * block函数参数不仅是一个Lambda表达式，它还是个泛型类型的扩展T:T.() - >Unit，这就是自己定义的Lambda表达式能隐式访
- * 问接收者实例的属性和函数的奥秘。通过定义为一个扩展，lambda函数的接收者同时也是apply函数的接收者----允许在Lambda表达式
- * 里访问接收者实例的函数和属性。
- * block函数表示：
+ * block函数参数不仅是一个Lambda表达式，它还是个泛型类型的扩展T:T.() - >Unit，这里的T和T.apply是一个对象,所以apply只能使用this，不能
+ * 自定义变量名。这就是自己定义的Lambda表达式能隐式访问接收者实例的属性和函数的奥秘。通过定义为一个扩展，lambda函数的接收者同时也是apply函
+ * 数的接收者----允许在Lambda表达式里访问接收者实例的函数和属性。
  */
 
 fun main(args: Array<String>) {

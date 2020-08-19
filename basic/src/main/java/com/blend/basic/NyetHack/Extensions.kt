@@ -23,6 +23,8 @@ fun Any.easyPrintTest() = println(this)
  * 使用泛型扩展函数后，可以支持任意类型的接收者
  * 新的泛型扩展函数不仅可以支持任何类型的接收者，还保留了接收者的类型信息。
  * 使用扩展函数后，能够支持更多类型的接收者，适应范围更广了
+ *
+ * T.easyPrint这里的T，看起来像一个具体的对象调用其方法，实质上在java中调用的其静态方法，所以apply函数不能自定义变量名
  */
 fun <T> T.easyPrint(): T {
     println(this)

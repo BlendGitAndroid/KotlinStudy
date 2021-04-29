@@ -80,6 +80,7 @@ class Spellbook {
         @JvmField
         val MAX_SPELL_COUNT = 10
 
+        @JvmStatic
         val MAX_SPELL_COUNT_NO = 10
 
         @JvmStatic

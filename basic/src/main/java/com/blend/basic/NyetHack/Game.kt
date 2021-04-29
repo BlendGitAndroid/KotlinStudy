@@ -92,7 +92,7 @@ private fun castFireball(numFireballs: Int = 2) =
  * Nothing:不返回任何东西，但也永远别指望它运行成功
  * 编译器认为：Nothing就意味着不可能成功执行完成，要么抛出异常，要么因某个原因再也不返回调用处。
  */
-fun shouldReturnAString(): String {
+fun shouldReturnAString() {
     TODO("implement the string building functionality here to return a string.")
     print("unreachable") //这一行代码不会执行到
 }

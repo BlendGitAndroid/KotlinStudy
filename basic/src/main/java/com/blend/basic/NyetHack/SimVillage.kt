@@ -1,5 +1,8 @@
 package com.blend.basic.NyetHack
 
+import java.lang.reflect.InvocationHandler
+import java.lang.reflect.Proxy
+
 
 /**
  * 匿名函数：定义时不取名字的函数，通常整体传递给其他函数，或者从其他函数返回。
@@ -161,6 +164,14 @@ fun printConstructionCost(numBuildings: Int) {
     println("construct cost:${numBuildings * cost}")
 }
 
+val pr = { i: Int ->
+    print("a")
+}
+
+val d = fun(param: Int): String {
+    return param.toString()
+}
+
 fun runSimulation() {
     val greetingFunction = configureGreetingFunction()
     println(greetingFunction("Blend runSimulation"))
@@ -179,4 +190,15 @@ fun configureGreetingFunction(): (String) -> String {
         println("Adding $numBuildings $structureType")
         "Welcome to SimVillage,$it!(copyright $currentYear)"
     }
+
+}
+
+inline fun <reified T : Any> noOpDelegate(): T {
+    val javaClass = T::class.java
+    val noOpHandler = InvocationHandler { _, _, _ ->
+        // no op
+    }
+    return Proxy.newProxyInstance(
+        javaClass.classLoader, arrayOf(javaClass), noOpHandler
+    ) as T
 }

@@ -24,7 +24,7 @@ package com.blend.basic.NyetHack
  * 是因为根据反编译的java代码，肯定先通过this()调用主构造函数，下面才执行次构造函数的代码，
  * 反编译后的java代码，主构造函数和类级别的属性，init初始化块中的属性，都是在this()构造函数中赋值的。
  */
-class Player(
+class Player constructor(
     _name: String,
     override var healthPoints: Int = 100,
     val isBlessed: Boolean,

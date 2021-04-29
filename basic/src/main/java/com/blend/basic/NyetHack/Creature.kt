@@ -64,4 +64,22 @@ class Goblin(
     override val diceCount: Int = 2
     override val diceSides: Int = 8
 
+    fun test2() {
+        ::test.invoke(5)
+    }
+
+
+    fun test(n: Int) {
+        val b: String.() -> Unit = String::sss
+        val c: (String) -> Unit = String::sss
+    }
+
+}
+
+fun String.sss() {
+
+}
+
+class AAA<T : Math> {
+
 }

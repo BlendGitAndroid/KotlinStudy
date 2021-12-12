@@ -1,4 +1,4 @@
-package com.blend.kotlinstudy
+package com.blend.kotlinstudy.base
 
 
 class CodeTest {

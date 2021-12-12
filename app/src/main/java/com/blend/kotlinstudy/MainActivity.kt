@@ -1,9 +1,11 @@
 package com.blend.kotlinstudy
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
+import com.blend.kotlinstudy.coroutines.CoroutinesActivity
 import java.lang.reflect.InvocationHandler
 import java.lang.reflect.Proxy
 
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+        startActivity(Intent(this@MainActivity, CoroutinesActivity::class.java))
     }
 }
 
@@ -39,7 +42,7 @@ class MyMap(private val realMap: HashMap<Int, Int>) : MutableMap<Int, Int> by re
 
     override fun put(key: Int, value: Int): Int? {
         lastKey = key
-        return realMap.put(key,value)
+        return realMap.put(key, value)
     }
 
     fun recover() {

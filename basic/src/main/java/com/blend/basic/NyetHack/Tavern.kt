@@ -59,6 +59,9 @@ fun mapFun() {
     //根据键读取相应的值
     print(patrolGold["Eli"])
 
+    val patronGold = mutableMapOf<String, Double>()
+    patronGold["Eli"] = 10.5
+
     /**
      * Map 存取函数
      * 1.[]取值函数
@@ -123,6 +126,9 @@ fun setFun() {
     listOf(1, 2, 3).toIntArray()    //转化为Int数组
 
 
+    // 数组类型
+    val aa = intArrayOf(1, 2, 3)
+    aa[2] = 5
 }
 
 fun listFun() {
@@ -130,7 +136,9 @@ fun listFun() {
     list越界取值：安全索引
      */
     //listOf函数不可变
-    val patronList = listOf("Eli", "Mordoc", "Blend")
+    val patronList: List<String> = listOf("Eli", "Mordoc", "Blend")
+
+//    patronList.add("blend") //报错
 
     //安全索引
     patronList.getOrElse(4) { "Unknown Patron else" }
@@ -150,6 +158,8 @@ fun listFun() {
     patronMutableList.add(0, "blendVip")
     patronMutableList.remove("mordoc")
 
+
+    val emptyList1 = mutableListOf<String>() //创建空列表
 
     //可变列表和不可变列表之间的互换
     patronList.toMutableList()
@@ -181,7 +191,7 @@ fun listFun() {
     patronList.forEachIndexed { index, value -> println("Good evening,$index --- $value") }
 
     /**
-     * 支持解构，能获取其前5个参数
+     * 支持解构，能获取其前3个参数
      *
      * _:能过滤掉不想要的元素
      */

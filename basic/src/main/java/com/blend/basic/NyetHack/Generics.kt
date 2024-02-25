@@ -12,6 +12,8 @@ package com.blend.basic.NyetHack
  *
  *LootBox能存放任何类型的Loot实例，但一次只能存放一个。如果往LootBox里面存放多个呢，使用vararg关键字，接受多个值参。
  */
+
+// 泛型类
 class LootBox<T : Loot>(vararg item: T) {
     var open = false
 

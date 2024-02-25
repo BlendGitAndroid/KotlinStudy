@@ -1,3 +1,4 @@
+//@file:JvmName("Hero") //使用JvmName指定编译类名
 package com.blend.basic.Interop
 
 import java.io.IOException
@@ -47,6 +48,7 @@ fun makeProclamation() = "Greetings,beast!"
 
 //Kotlin使用默认参数，可以由函数调用者自由选择怎么调用这个函数，不用java中繁重的重载
 //Kotlin可以使用命名参数来调用
+//@JvmOverloads注解来协助产生Kotlin函数的重载版本
 @JvmOverloads
 fun handOverFood(leftHand: String = "berries", rightHand: String = "beef") {
     println("Mmmm... you hand over some delicious $leftHand and $rightHand")
@@ -82,6 +84,9 @@ class Spellbook {
 
         @JvmStatic
         val MAX_SPELL_COUNT_NO = 10
+
+        // 什么都没有修饰的
+        val MAX_SPELL_COUNT_NO1 = 10
 
         @JvmStatic
         fun getSpellBook() = println("I am the great grimoire!")

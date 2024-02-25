@@ -4,7 +4,7 @@ package com.blend.basic
 /**
  * 编译时常量：保证只读，只能定义在函数之外
  *
- * 编译时常量支持的基本数据类型：
+ * 编译时常量支持的基本数据类型：为使用复杂的数据类型可能会危害编译时的安全保障
  * String，Int，Double，Float，Short，Byte，Char，Boolean
  */
 const val MAX_EXPERIENCE: Int = 5

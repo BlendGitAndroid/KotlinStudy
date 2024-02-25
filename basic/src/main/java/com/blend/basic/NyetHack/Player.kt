@@ -26,7 +26,7 @@ package com.blend.basic.NyetHack
  */
 class Player constructor(
     _name: String,
-    override var healthPoints: Int = 100,
+    override var healthPoints: Int = 100,   //属性直接在这里定义
     val isBlessed: Boolean,
     private val isImmortal: Boolean
 ) : Fightable {
@@ -72,7 +72,9 @@ class Player constructor(
     /**
      * 惰性初始化：暂时不初始化某个变量，直到首次使用它。在Kotlin中使用一种代理的机制来实现的，负责约定属性该如何初始化。
      */
-    val lazyHomeTown = lazy {}
+    val lazyHomeTown = lazy {"aaa"}
+
+    val lazyHomeTown2 by lazy { "aaa" }
 
     /**
      * 次构造函数：只是多了一个构造类实例的方式，主构造函数的要求仍要满足。次构造函数要么直接调用主构造函数，要么通过

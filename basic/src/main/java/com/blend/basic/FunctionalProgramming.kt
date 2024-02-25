@@ -5,8 +5,8 @@ package com.blend.basic
  * 函数式编程：主要依赖于高阶函数（以函数为参数或者返回函数）返回的数据，感觉有点类似于RxJava的函数式编程。
  * 函数式编程的特点是组合多个函数以链式调用的形式操作数据。
  *
- * 函数式应用通常由三大类函数组成：变换、过滤和合并，每类函数都针对集合数据类型设计，目标是产生一个最终结果,但是原始的
- * 数据是不会变化的。其设计理念就是不可变数据的副本在链上的函数间传递。
+ * 函数式应用通常由三大类函数组成：变换(transform)、过滤(filter)和合并(combine)，每类函数都针对集合数据类型设计，
+ * 目标是产生一个最终结果,但是原始的数据是不会变化的。其设计理念就是不可变数据的副本在链上的函数间传递。
  */
 
 /**
@@ -33,7 +33,8 @@ fun filterTest() {
 
     val itemsOfManyColors =
         listOf(
-            listOf("red apple", "green apple", "blue apple"), listOf("red fish", "blue fish"),
+            listOf("red apple", "green apple", "blue apple"),
+            listOf("red fish", "blue fish"),
             listOf("yellow banana", "teal banana")
         )
 

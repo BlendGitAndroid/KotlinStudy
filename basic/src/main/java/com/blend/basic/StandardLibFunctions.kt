@@ -18,13 +18,13 @@ fun main(args: Array<String>) {
 
     applyFunc()
 
-    letFunc()
+    alsoFunc()
 
     runFunc()
 
-    withFunc()
+    letFunc()
 
-    alsoFunc()
+    withFunc()
 
     takeIfFunc()
 

@@ -4,7 +4,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
-import java.util.function.Function;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -51,7 +50,7 @@ public class Jhava {
         throw new Exception();
     }
 
-    //处理Kotlin中的异常
+    //java中的异常都是已检异常,处理Kotlin中的异常
     public void apologize() {
         try {
             HeroKt.acceptApology();
@@ -74,13 +73,15 @@ public class Jhava {
             System.out.println(spell);
         }
 
-        System.out.println("companion object no:" + Spellbook.Companion.getMAX_SPELL_COUNT_NO());
+        System.out.println("companion object no:" + Spellbook.getMAX_SPELL_COUNT_NO());
+        System.out.println("companion object no:" + Spellbook.Companion.getMAX_SPELL_COUNT_NO1());
         System.out.println("companion object:" + Spellbook.MAX_SPELL_COUNT);
 
         Spellbook.getSpellBook();
 
         //Function接口有23个，从Function0到Function22。每一个FunctionN都包含一个invoke函数，专门调用函数类型函数。
         //所以任何时候调用一个函数类型，在Java中都需要invoke。
+        // 这里的入参是Function1<in P1, out R> ，in表示入参，out表示返回值, 就是逆变和谐变
         Function1<String, Unit> translator = HeroKt.getTranslator();
         translator.invoke("TRUCE");
     }

@@ -1,9 +1,11 @@
 package com.blend.basic.NyetHack
 
-import java.util.*
+import java.util.Random
 
 
 /**
+ *
+ * Kotlin的接口,可以定义属性
  * 接口，可以定义一组未实现的公共属性和行为。
  * 类之间想要共享属性或函数，但又无法建立继承关系时，就非常适合使用这种只定义而不实现的接口特性。
  * 也就是说，通过接口，无须继承或被继承，一组类就可以拥有共同的属性和函数。
@@ -56,7 +58,7 @@ abstract class Monster(val name: String, val description: String, override var h
 class Goblin(
     name: String,
     description: String = "A nasty-looking goblin",
-    healthPoints: Int = 30
+    healthPoints: Int = 30,
 ) : Monster(
     name, description, healthPoints
 ) {
@@ -77,7 +79,7 @@ class Goblin(
 }
 
 fun String.sss() {
-
+    println("sss: $this")
 }
 
 class AAA<T : Math> {

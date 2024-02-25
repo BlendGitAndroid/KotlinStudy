@@ -19,8 +19,57 @@ package com.blend.basic.NyetHack
  */
 class Barrel<out T>(val item: T)
 
+//fun <T> randomOrBackupLoot(backupLoot: () -> T): T {
+//    val items = listOf(Coin(14), Fedora("a fedora of the ages", 150))
+//    val randomLoot: Loot = items.shuffled().first()
+//
+//    return if (randomLoot is T) {
+//        randomLoot
+//    } else {
+//        backupLoot()
+//    }
+//}
+
+// Kotlin不允许对泛型参数T做类型检查，因为泛型参数类型会被类型擦除
+// 查看randomOrBackupLoot函数的字节码，你会看到randomLoot is T表达式的类型擦除原因：
+// T泛型参数被Object替代了，因为在运行时编译器没法知道T的具体类型。所以，以通常
+// 的方式对泛型类型做类型检查是行不通的。
+// Kotlin提供了reified关键字，它允许你在运行时保留类型信息。
+// 有了reified关键字，不需要反射（reflection）我们也能检查泛型参数的类型了
+inline fun <reified T> randomOrBackupLootReified(backupLoot: () -> T): T {
+    val items = listOf(Coin(14), Fedora("a fedora of the ages", 150))
+    val first: Loot = items.shuffled().first()
+    return if (first is T) {
+        first
+    } else {
+        backupLoot()
+    }
+}
 
 fun main(args: Array<String>) {
+//    randomOrBackupLoot {
+//        Fedora("a backup fedora", 15)
+//    }.run {
+//// Prints either the backup fedora or the fedora of the ages
+//        println(name)
+//    }
+
+    var fedoraBarrel: Barrel<Fedora> = Barrel(Fedora("a generic-looking fedora", 15))
+    var lootBarrel: Barrel<Loot> = Barrel(Loot(15))
+    var coinBarrel: Barrel<Coin> = Barrel(Coin(15))
+    lootBarrel = fedoraBarrel
+    val myFedora: Fedora = lootBarrel.item
+    println(myFedora)
+
+//    fedoraBarrel = lootBarrel   // 这样写就有问题了,不能把子类给父类
+//    val myFedora1: Fedora = fedoraBarrel.item
+//    println(myFedora1)
+
+    //    coinBarrel = fedoraBarrel   // 这样写就有问题了
+}
+
+
+fun main11(args: Array<String>) {
 
     var fedoraBarrel: Barrel<Fedora> = Barrel(Fedora("a generic-looking fedora", 15))
 
@@ -44,6 +93,10 @@ fun main(args: Array<String>) {
 
 
 /**
+ * 泛型参数可以扮演两种角色：生产者（producer）或消费者（consumer）。生
+ * 产者角色就意味着泛型参数可读而不可写；消费者角色则相反，可写而不可读。
+ *
+ *
  * 协变和逆变
  * 协变：协就是妥协，向基类妥协，out：输出
  * 逆变：逆就是反向，能一直逆到Any去，因为Any是任何类的父类，in：写入

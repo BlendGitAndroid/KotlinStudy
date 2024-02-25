@@ -12,6 +12,8 @@ package com.blend.basic.NyetHack
  *
  * copy():复制一个对象
  */
+
+// constructor可以省略
 data class Coordinate(val x: Int, val y: Int) {
     val isInBound = x >= 0 && y >= 0
 

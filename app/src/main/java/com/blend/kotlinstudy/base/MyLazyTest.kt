@@ -1,6 +1,8 @@
 package com.blend.kotlinstudy.base
 
-
+/**
+ * Lazy机制
+ */
 class CodeTest {
     fun eat(food: String = "米饭") {
         synchronized(this) {

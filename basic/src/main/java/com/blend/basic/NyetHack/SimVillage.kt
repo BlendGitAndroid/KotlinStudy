@@ -80,6 +80,9 @@ fun main(args: Array<String>) {
      *
      * 这里省略了圆括号
      *
+     * Lambda表达式放在最后的写法，可以省略（）
+     * 还能使用函数引用
+     *
      * 匿名函数：Lambda
      * 定义：Lambda表达式
      * 返回数据：Lambda结果
@@ -89,6 +92,13 @@ fun main(args: Array<String>) {
         println("Adding $numBuilding houses")
         "Welcome to SimVillage,$playerName!(copyright $currentYear)"
     }
+
+    // {}就是一个函数体
+    runSimulation("xiaohai", ::printConstructionCost,{ playerName, numBuilding ->
+        val currentYear = 2018
+        println("Adding $numBuilding houses")
+        "Welcome to SimVillage,$playerName!(copyright $currentYear)"
+    })
 
     /**
      * 函数内联：使用inline，将Lambda表达式的函数体复制到函数运行的地方

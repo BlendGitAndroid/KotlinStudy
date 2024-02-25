@@ -39,7 +39,7 @@ private fun printPlayerStatus(
     auraColor: String,
     isBlessed: Boolean,
     name: String,
-    healthState: String
+    healthState: String,
 ) {
     println("(Blend: $auraColor)" + "(Blessed: ${if (isBlessed) "YES" else "NO"})")
     println("$name $healthState")
@@ -59,6 +59,7 @@ private fun formatHealthStatus(healthPoints: Int, isBlessed: Boolean): String {
         100 -> {
             "is in excellent condition!"
         }
+
         in 50..99 -> {
             if (isBlessed) {
                 "has some minor wounds but is healing quite quickly!"
@@ -66,9 +67,11 @@ private fun formatHealthStatus(healthPoints: Int, isBlessed: Boolean): String {
                 "has some minor wounds."
             }
         }
+
         in 15..49 -> {
             "looks pretty hurt."
         }
+
         else -> {
             "has some awful wounds."
         }
@@ -87,6 +90,9 @@ private fun formatHealthStatus(healthPoints: Int, isBlessed: Boolean): String {
  */
 private fun castFireball(numFireballs: Int = 2) =
     println("A glass of Fireball springs into existence.(x$numFireballs)")
+
+// 但表达式函数,在这个函数中,返回类型,{},return都可以省略掉
+private fun castFireball() = 1 + 2
 
 /**
  * Nothing:不返回任何东西，但也永远别指望它运行成功

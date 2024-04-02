@@ -114,11 +114,23 @@ private suspend fun extracted() {
 // 它启动了 10 万个协程，并且在 5 秒钟后，每个协程都输出⼀个点。
 fun main5() = runBlocking {
     repeat(100_000) {
+        // 这里launch了10万个协程
         launch {
             delay(5000L)
             print(".")
         }
     }
+}
+
+fun main5_5() = runBlocking<Unit> {
+    // 这里是launch了一个协程,但是有10万次循环,注意区分不一样
+    val job = launch {
+        repeat(100_000) { i ->
+            delay(500L)
+            println("job:I'm sleeping $i")
+        }
+    }
+    println("main:Now I can quit!")
 }
 
 // 全局协程像守护线程，如果主线程结束，那么全局协程也会结束
@@ -129,5 +141,4 @@ fun main6() = runBlocking {
             delay(500L)
         }
     }
-    delay(1300L) // 在延迟后退出
 }
